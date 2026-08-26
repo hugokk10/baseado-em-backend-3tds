@@ -1,0 +1,31 @@
+function criarConta(titular, saldoInicial) {
+    let saldo = saldoInicial;
+
+    return {
+        titular,
+        depositar(valor) {
+            if (valor <= 0) {
+                console.log("Valor de depósito inválido");
+                return;
+            }
+            saldo += valor;
+        },
+        sacar(valor) {
+            if (valor > saldo) {
+                console.log("Saldo insuficiente.");
+                return;
+            }
+            saldo -= valor;
+        },
+        get saldoAtual() {
+            return saldo;
+        },
+    };
+}
+
+const contas = [criarConta("João", 1000), criarConta("Paula", 5000)];
+
+contas[0].depositar(200);
+
+contas.forEach((conta) => {console.log(`${contas.titular} tem R$ ${conta.saldoAtual}`);
+}); //apresentando undefined no nome do titular
